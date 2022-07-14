@@ -105,54 +105,6 @@ class TestInfoExtractor(unittest.TestCase):
 
     def test_search_json_ld_realworld(self):
         _TESTS = [
-            # https://github.com/ytdl-org/youtube-dl/issues/23306
-            (
-                r'''<script type="application/ld+json">
-{
-"@context": "http://schema.org/",
-"@type": "VideoObject",
-"name": "1 On 1 With Kleio",
-"url": "https://www.eporner.com/hd-porn/xN49A1cT3eB/1-On-1-With-Kleio/",
-"duration": "PT0H12M23S",
-"thumbnailUrl": ["https://static-eu-cdn.eporner.com/thumbs/static4/7/78/780/780814/9_360.jpg", "https://imggen.eporner.com/780814/1920/1080/9.jpg"],
-"contentUrl": "https://gvideo.eporner.com/xN49A1cT3eB/xN49A1cT3eB.mp4",
-"embedUrl": "https://www.eporner.com/embed/xN49A1cT3eB/1-On-1-With-Kleio/",
-"image": "https://static-eu-cdn.eporner.com/thumbs/static4/7/78/780/780814/9_360.jpg",
-"width": "1920",
-"height": "1080",
-"encodingFormat": "mp4",
-"bitrate": "6617kbps",
-"isFamilyFriendly": "False",
-"description": "Kleio Valentien",
-"uploadDate": "2015-12-05T21:24:35+01:00",
-"interactionStatistic": {
-"@type": "InteractionCounter",
-"interactionType": { "@type": "http://schema.org/WatchAction" },
-"userInteractionCount": 1120958
-}, "aggregateRating": {
-"@type": "AggregateRating",
-"ratingValue": "88",
-"ratingCount": "630",
-"bestRating": "100",
-"worstRating": "0"
-}, "actor": [{
-"@type": "Person",
-"name": "Kleio Valentien",
-"url": "https://www.eporner.com/pornstar/kleio-valentien/"
-}]}
-                </script>''',
-                {
-                    'title': '1 On 1 With Kleio',
-                    'description': 'Kleio Valentien',
-                    'url': 'https://gvideo.eporner.com/xN49A1cT3eB/xN49A1cT3eB.mp4',
-                    'timestamp': 1449347075,
-                    'duration': 743.0,
-                    'view_count': 1120958,
-                    'width': 1920,
-                    'height': 1080,
-                },
-                {},
-            ),
             (
                 r'''<script type="application/ld+json">
       {
@@ -326,43 +278,6 @@ class TestInfoExtractor(unittest.TestCase):
                 'formats': [{
                     'url': 'https://127.0.0.1/vid.mp4',
                 }],
-            })
-
-        # from https://www.r18.com/
-        # with kpbs in label
-        expect_dict(
-            self,
-            self.ie._parse_html5_media_entries(
-                'https://www.r18.com/',
-                r'''
-                <video id="samplevideo_amateur" class="js-samplevideo video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" width="400" height="225" poster="//pics.r18.com/digital/amateur/mgmr105/mgmr105jp.jpg">
-                    <source id="video_source" src="https://awscc3001.r18.com/litevideo/freepv/m/mgm/mgmr105/mgmr105_sm_w.mp4" type="video/mp4"  res="240" label="300kbps">
-                    <source id="video_source" src="https://awscc3001.r18.com/litevideo/freepv/m/mgm/mgmr105/mgmr105_dm_w.mp4" type="video/mp4"  res="480" label="1000kbps">
-                    <source id="video_source" src="https://awscc3001.r18.com/litevideo/freepv/m/mgm/mgmr105/mgmr105_dmb_w.mp4" type="video/mp4"  res="740" label="1500kbps">
-                    <p>Your browser does not support the video tag.</p>
-                </video>
-                ''', None)[0],
-            {
-                'formats': [{
-                    'url': 'https://awscc3001.r18.com/litevideo/freepv/m/mgm/mgmr105/mgmr105_sm_w.mp4',
-                    'ext': 'mp4',
-                    'format_id': '300kbps',
-                    'height': 240,
-                    'tbr': 300,
-                }, {
-                    'url': 'https://awscc3001.r18.com/litevideo/freepv/m/mgm/mgmr105/mgmr105_dm_w.mp4',
-                    'ext': 'mp4',
-                    'format_id': '1000kbps',
-                    'height': 480,
-                    'tbr': 1000,
-                }, {
-                    'url': 'https://awscc3001.r18.com/litevideo/freepv/m/mgm/mgmr105/mgmr105_dmb_w.mp4',
-                    'ext': 'mp4',
-                    'format_id': '1500kbps',
-                    'height': 740,
-                    'tbr': 1500,
-                }],
-                'thumbnail': '//pics.r18.com/digital/amateur/mgmr105/mgmr105jp.jpg'
             })
 
         # from https://www.csfd.cz/
@@ -543,47 +458,6 @@ class TestInfoExtractor(unittest.TestCase):
                 'id': 'XEgvuql4',
                 'formats': [{
                     'url': 'rtmp://192.138.214.154/live/sjclive',
-                    'ext': 'flv'
-                }]
-            })
-
-        # from https://www.pornoxo.com/videos/7564/striptease-from-sexy-secretary/
-        expect_dict(
-            self,
-            self.ie._extract_jwplayer_data(r'''
-<script type="text/javascript">
-    jwplayer("mediaplayer").setup({
-        'videoid': "7564",
-        'width': "100%",
-        'aspectratio': "16:9",
-        'stretching': "exactfit",
-        'autostart': 'false',
-        'flashplayer': "https://t04.vipstreamservice.com/jwplayer/v5.10/player.swf",
-        'file': "https://cdn.pornoxo.com/key=MF+oEbaxqTKb50P-w9G3nA,end=1489689259,ip=104.199.146.27/ip=104.199.146.27/speed=6573765/buffer=3.0/2009-12/4b2157147afe5efa93ce1978e0265289c193874e02597.flv",
-        'image': "https://t03.vipstreamservice.com/thumbs/pxo-full/2009-12/14/a4b2157147afe5efa93ce1978e0265289c193874e02597.flv-full-13.jpg",
-        'filefallback': "https://cdn.pornoxo.com/key=9ZPsTR5EvPLQrBaak2MUGA,end=1489689259,ip=104.199.146.27/ip=104.199.146.27/speed=6573765/buffer=3.0/2009-12/m_4b2157147afe5efa93ce1978e0265289c193874e02597.mp4",
-        'logo.hide': true,
-        'skin': "https://t04.vipstreamservice.com/jwplayer/skin/modieus-blk.zip",
-        'plugins': "https://t04.vipstreamservice.com/jwplayer/dock/dockableskinnableplugin.swf",
-        'dockableskinnableplugin.piclink': "/index.php?key=ajax-videothumbsn&vid=7564&data=2009-12--14--4b2157147afe5efa93ce1978e0265289c193874e02597.flv--17370",
-        'controlbar': 'bottom',
-        'modes': [
-            {type: 'flash', src: 'https://t04.vipstreamservice.com/jwplayer/v5.10/player.swf'}
-        ],
-        'provider': 'http'
-    });
-    //noinspection JSAnnotator
-    invideo.setup({
-        adsUrl: "/banner-iframe/?zoneId=32",
-        adsUrl2: "",
-        autostart: false
-    });
-</script>
-            ''', 'dummy', require_title=False),
-            {
-                'thumbnail': 'https://t03.vipstreamservice.com/thumbs/pxo-full/2009-12/14/a4b2157147afe5efa93ce1978e0265289c193874e02597.flv-full-13.jpg',
-                'formats': [{
-                    'url': 'https://cdn.pornoxo.com/key=MF+oEbaxqTKb50P-w9G3nA,end=1489689259,ip=104.199.146.27/ip=104.199.146.27/speed=6573765/buffer=3.0/2009-12/4b2157147afe5efa93ce1978e0265289c193874e02597.flv',
                     'ext': 'flv'
                 }]
             })
