@@ -476,7 +476,6 @@ class PeerTubeIE(InfoExtractor):
                             v\.phreedom\.club|
                             v\.sil\.sh|
                             v\.szy\.io|
-                            v\.xxxapex\.com|
                             veezee\.tube|
                             vid\.dascoyote\.xyz|
                             vid\.garwood\.io|
@@ -648,7 +647,6 @@ class PeerTubeIE(InfoExtractor):
                             www\.captain-german\.com|
                             www\.wiki-tube\.de|
                             xxivproduction\.video|
-                            xxx\.noho\.st|
 
                             # from youtube-dl
                             peertube\.rainbowswingers\.net|
@@ -685,7 +683,6 @@ class PeerTubeIE(InfoExtractor):
                             video\.nesven\.eu|
                             v\.bearvideo\.win|
                             video\.qoto\.org|
-                            justporn\.cc|
                             video\.vny\.fr|
                             peervideo\.club|
                             tube\.taker\.fr|
@@ -885,7 +882,6 @@ class PeerTubeIE(InfoExtractor):
                             video\.arbitrarion\.com|
                             video\.datsemultimedia\.com|
                             stoptrackingus\.tv|
-                            peertube\.ricostrongxxx\.com|
                             docker\.videos\.lecygnenoir\.info|
                             peertube\.togart\.de|
                             tube\.postblue\.info|

@@ -21,7 +21,6 @@ from .dailymail import DailyMailIE
 from .dailymotion import DailymotionIE
 from .dbtv import DBTVIE
 from .digiteka import DigitekaIE
-from .drtuber import DrTuberIE
 from .eagleplatform import EaglePlatformIE
 from .ertgr import ERTWebtvEmbedIE
 from .expressen import ExpressenIE
@@ -44,7 +43,6 @@ from .mediaset import MediasetIE
 from .mediasite import MediasiteIE
 from .megaphone import MegaphoneIE
 from .megatvcom import MegaTVComEmbedIE
-from .mofosex import MofosexEmbedIE
 from .mtv import MTVServicesEmbeddedIE
 from .myvi import MyviIE
 from .nbc import NBCSportsVPlayerIE
@@ -56,9 +54,7 @@ from .panopto import PanoptoBaseIE
 from .peertube import PeerTubeIE
 from .piksel import PikselIE
 from .pladform import PladformIE
-from .pornhub import PornHubIE
 from .rcs import RCSEmbedsIE
-from .redtube import RedTubeIE
 from .rumble import RumbleEmbedIE
 from .rutube import RutubeIE
 from .rutv import RUTVIE
@@ -66,7 +62,6 @@ from .ruutu import RuutuIE
 from .senategov import SenateISVPIE
 from .simplecast import SimplecastIE
 from .soundcloud import SoundcloudEmbedIE
-from .spankwire import SpankwireIE
 from .sportbox import SportBoxIE
 from .spotify import SpotifyBaseIE
 from .springboardplatform import SpringboardPlatformIE
@@ -77,8 +72,6 @@ from .ted import TedEmbedIE
 from .theplatform import ThePlatformIE
 from .threeqsdn import ThreeQSDNIE
 from .tiktok import TikTokIE
-from .tnaflix import TNAFlixNetworkEmbedIE
-from .tube8 import Tube8IE
 from .tunein import TuneInBaseIE
 from .tvc import TVCIE
 from .tvopengr import TVOpenGrEmbedIE
@@ -102,9 +95,7 @@ from .webcaster import WebcasterFeedIE
 from .wimtv import WimTVIE
 from .wistia import WistiaIE
 from .xfileshare import XFileShareIE
-from .xhamster import XHamsterEmbedIE
 from .yapfiles import YapFilesIE
-from .youporn import YouPornIE
 from .youtube import YoutubeIE
 from .zype import ZypeIE
 from ..compat import compat_etree_fromstring
@@ -970,18 +961,6 @@ class GenericIE(InfoExtractor):
                 'title': 'Fenn-AA_PA_Radar_Course_Lecture_1c_Final',
             }
         },
-        # Flowplayer
-        {
-            'url': 'http://www.handjobhub.com/video/busty-blonde-siri-tit-fuck-while-wank-6313.html',
-            'md5': '9d65602bf31c6e20014319c7d07fba27',
-            'info_dict': {
-                'id': '5123ea6d5e5a7',
-                'ext': 'mp4',
-                'age_limit': 18,
-                'uploader': 'www.handjobhub.com',
-                'title': 'Busty Blonde Siri Tit Fuck While Wank at HandjobHub.com',
-            }
-        },
         # Multiple brightcove videos
         # https://github.com/ytdl-org/youtube-dl/issues/2283
         {
@@ -1209,20 +1188,6 @@ class GenericIE(InfoExtractor):
                 'description': 'Browse King Machine videos & audio for sweet media. Your eyes will thank you.',
                 'thumbnail': r're:^https?://.*\.jpg$',
             },
-        },
-        {
-            # JWPlayer config passed as variable
-            'url': 'http://www.txxx.com/videos/3326530/ariele/',
-            'info_dict': {
-                'id': '3326530_hq',
-                'ext': 'mp4',
-                'title': 'ARIELE | Tube Cup',
-                'uploader': 'www.txxx.com',
-                'age_limit': 18,
-            },
-            'params': {
-                'skip_download': True,
-            }
         },
         {
             # JWPlatform iframe
@@ -3249,51 +3214,6 @@ class GenericIE(InfoExtractor):
         spotify_urls = SpotifyBaseIE._extract_embed_urls(webpage)
         if spotify_urls:
             return self.playlist_from_matches(spotify_urls, video_id, video_title)
-
-        # Look for embedded XHamster player
-        xhamster_urls = XHamsterEmbedIE._extract_urls(webpage)
-        if xhamster_urls:
-            return self.playlist_from_matches(xhamster_urls, video_id, video_title, ie='XHamsterEmbed')
-
-        # Look for embedded TNAFlixNetwork player
-        tnaflix_urls = TNAFlixNetworkEmbedIE._extract_urls(webpage)
-        if tnaflix_urls:
-            return self.playlist_from_matches(tnaflix_urls, video_id, video_title, ie=TNAFlixNetworkEmbedIE.ie_key())
-
-        # Look for embedded PornHub player
-        pornhub_urls = PornHubIE._extract_urls(webpage)
-        if pornhub_urls:
-            return self.playlist_from_matches(pornhub_urls, video_id, video_title, ie=PornHubIE.ie_key())
-
-        # Look for embedded DrTuber player
-        drtuber_urls = DrTuberIE._extract_urls(webpage)
-        if drtuber_urls:
-            return self.playlist_from_matches(drtuber_urls, video_id, video_title, ie=DrTuberIE.ie_key())
-
-        # Look for embedded RedTube player
-        redtube_urls = RedTubeIE._extract_urls(webpage)
-        if redtube_urls:
-            return self.playlist_from_matches(redtube_urls, video_id, video_title, ie=RedTubeIE.ie_key())
-
-        # Look for embedded Tube8 player
-        tube8_urls = Tube8IE._extract_urls(webpage)
-        if tube8_urls:
-            return self.playlist_from_matches(tube8_urls, video_id, video_title, ie=Tube8IE.ie_key())
-
-        # Look for embedded Mofosex player
-        mofosex_urls = MofosexEmbedIE._extract_urls(webpage)
-        if mofosex_urls:
-            return self.playlist_from_matches(mofosex_urls, video_id, video_title, ie=MofosexEmbedIE.ie_key())
-
-        # Look for embedded Spankwire player
-        spankwire_urls = SpankwireIE._extract_urls(webpage)
-        if spankwire_urls:
-            return self.playlist_from_matches(spankwire_urls, video_id, video_title, ie=SpankwireIE.ie_key())
-
-        # Look for embedded YouPorn player
-        youporn_urls = YouPornIE._extract_urls(webpage)
-        if youporn_urls:
-            return self.playlist_from_matches(youporn_urls, video_id, video_title, ie=YouPornIE.ie_key())
 
         # Look for embedded Tvigle player
         mobj = re.search(
