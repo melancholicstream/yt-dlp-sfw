@@ -40,11 +40,6 @@ class TestAgeRestriction(unittest.TestCase):
     def test_youtube(self):
         self._assert_restricted('07FYdnEawAQ', '07FYdnEawAQ.mp4', 10)
 
-    def test_youporn(self):
-        self._assert_restricted(
-            'http://www.youporn.com/watch/505835/sex-ed-is-it-safe-to-masturbate-daily/',
-            '505835.mp4', 2, old_age=25)
-
 
 if __name__ == '__main__':
     unittest.main()
