@@ -241,24 +241,6 @@ class ViceArticleIE(ViceBaseIE):
     _VALID_URL = r'https://(?:www\.)?vice\.com/(?P<locale>[^/]+)/article/(?:[0-9a-z]{6}/)?(?P<id>[^?#]+)'
 
     _TESTS = [{
-        'url': 'https://www.vice.com/en_us/article/on-set-with-the-woman-making-mormon-porn-in-utah',
-        'info_dict': {
-            'id': '58dc0a3dee202d2a0ccfcbd8',
-            'ext': 'mp4',
-            'title': 'Mormon War on Porn',
-            'description': 'md5:1c5d91fe25fa8aa304f9def118b92dbf',
-            'uploader': 'vice',
-            'uploader_id': '57a204088cb727dec794c67b',
-            'timestamp': 1491883129,
-            'upload_date': '20170411',
-            'age_limit': 17,
-        },
-        'params': {
-            # AES-encrypted m3u8
-            'skip_download': True,
-        },
-        'add_ie': [ViceIE.ie_key()],
-    }, {
         'url': 'https://www.vice.com/en_us/article/how-to-hack-a-car',
         'md5': '13010ee0bc694ea87ec40724397c2349',
         'info_dict': {
@@ -271,24 +253,6 @@ class ViceArticleIE(ViceBaseIE):
             'upload_date': '20140529',
         },
         'add_ie': [YoutubeIE.ie_key()],
-    }, {
-        'url': 'https://www.vice.com/en_us/article/znm9dx/karley-sciortino-slutever-reloaded',
-        'md5': 'a7ecf64ee4fa19b916c16f4b56184ae2',
-        'info_dict': {
-            'id': '57f41d3556a0a80f54726060',
-            'ext': 'mp4',
-            'title': "Making The World's First Male Sex Doll",
-            'description': 'md5:19b00b215b99961cf869c40fbe9df755',
-            'uploader': 'vice',
-            'uploader_id': '57a204088cb727dec794c67b',
-            'timestamp': 1476919911,
-            'upload_date': '20161019',
-            'age_limit': 17,
-        },
-        'params': {
-            'skip_download': True,
-        },
-        'add_ie': [ViceIE.ie_key()],
     }, {
         'url': 'https://www.vice.com/en_us/article/cowboy-capitalists-part-1',
         'only_matching': True,

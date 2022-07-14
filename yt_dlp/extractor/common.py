@@ -3222,8 +3222,7 @@ class InfoExtractor:
         media_tags.extend(re.findall(
             # We only allow video|audio followed by a whitespace or '>'.
             # Allowing more characters may end up in significant slow down (see
-            # https://github.com/ytdl-org/youtube-dl/issues/11979, example URL:
-            # http://www.porntrex.com/maps/videositemap.xml).
+            # https://github.com/ytdl-org/youtube-dl/issues/11979)
             r'(?s)(<(?P<tag>%s)(?:\s+[^>]*)?>)(.*?)</(?P=tag)>' % _MEDIA_TAG_NAME_RE, webpage))
         for media_tag, _, media_type, media_content in media_tags:
             media_info = {

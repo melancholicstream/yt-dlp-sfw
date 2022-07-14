@@ -24,16 +24,6 @@ class LibsynIE(InfoExtractor):
             'upload_date': '20180320',
             'thumbnail': 're:^https?://.*',
         },
-    }, {
-        'url': 'https://html5-player.libsyn.com/embed/episode/id/3727166/height/75/width/200/theme/standard/direction/no/autoplay/no/autonext/no/thumbnail/no/preload/no/no_addthis/no/',
-        'md5': '6c5cb21acd622d754d3b1a92b582ce42',
-        'info_dict': {
-            'id': '3727166',
-            'ext': 'mp3',
-            'title': 'Clients From Hell Podcast - How a Sex Toy Company Kickstarted my Freelance Career',
-            'upload_date': '20150818',
-            'thumbnail': 're:^https?://.*',
-        }
     }]
 
     def _real_extract(self, url):
