@@ -127,7 +127,7 @@ While these steps won't necessarily ensure that no misuse of the account takes p
 
 ### Is the website primarily used for piracy?
 
-We follow [youtube-dl's policy](https://github.com/ytdl-org/youtube-dl#can-you-add-support-for-this-anime-video-site-or-site-which-shows-current-movies-for-free) to not support services that is primarily used for infringing copyright. Additionally, it has been decided to not to support porn sites that specialize in deep fake. We also cannot support any service that serves only [DRM protected content](https://en.wikipedia.org/wiki/Digital_rights_management). 
+We follow [youtube-dl's policy](https://github.com/ytdl-org/youtube-dl#can-you-add-support-for-this-anime-video-site-or-site-which-shows-current-movies-for-free) to not support services that is primarily used for infringing copyright. We also cannot support any service that serves only [DRM protected content](https://en.wikipedia.org/wiki/Digital_rights_management). 
 
 
 
@@ -258,8 +258,6 @@ For extraction to work yt-dlp relies on metadata your extractor extracts and pro
  - `url` (media download URL) or `formats`
 
 The aforementioned metafields are the critical data that the extraction does not make any sense without and if any of them fail to be extracted then the extractor is considered completely broken. While all extractors must return a `title`, they must also allow it's extraction to be non-fatal.
-
-For pornographic sites, appropriate `age_limit` must also be returned.
 
 The extractor is allowed to return the info dict without url or formats in some special cases if it allows the user to extract usefull information with `--ignore-no-formats-error` - Eg: when the video is a live stream that has not started yet.
 
